@@ -5,5 +5,7 @@ images/*
 metadata/*
 /metadata/*
 trait-layers/*
-*.DS_Store
+# trait-layers/**/*.png
+.DS_Store
 *.png
+**/*.png
