@@ -4,3 +4,6 @@ workspace.code-workspace
 images/*
 metadata/*
 /metadata/*
+trait-layers/*
+*.DS_Store
+*.png
