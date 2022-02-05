@@ -1,2 +1,6 @@
 .python-version
 workspace.code-workspace
+/images/*
+images/*
+metadata/*
+/metadata/*

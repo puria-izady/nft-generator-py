@@ -3,6 +3,7 @@ from PIL import Image
 import random
 import json
 import os
+from config.config_boss_cat import config, amount_of_nfts
 
 os.system('cls' if os.name=='nt' else 'clear')
 
@@ -100,41 +101,7 @@ def generate_unique_images(amount, config):
         with open('./metadata/' + str(item["tokenId"]) + '.json', 'w') as outfile:
           json.dump(original_json, outfile, indent=4)
 
-generate_unique_images(11, {
-  "layers": [
-    {
-      "name": "Background",
-      "values": ["Blue", "Orange", "Purple", "Red", "Yellow"],
-      "trait_path": "./trait-layers/backgrounds",
-      "filename": ["blue", "orange", "purple", "red", "yellow"],
-      "weights": [20,20,20,20,20]
-    },
-    {
-      "name": "Foreground",
-      "values": ["Python Logo", "Python Logo 32"],
-      "trait_path": "./trait-layers/foreground",
-      "filename": ["logo", "logo"],
-      "weights": [50, 50]
-    },
-    {
-      "name": "Branding",
-      "values": ["A Name", "Another Name"],
-      "trait_path": "./trait-layers/text",
-      "filename": ["text", "text"],
-      "weights": [50, 50]
-    }
-  ],
-  "incompatibilities": [
-    {
-      "layer": "Background",
-      "value": "Blue",
-      "incompatible_with": ["Python Logo 2"]
-    },  #  @dev : Blue backgrounds will never have the attribute "Python Logo 2".
-  ],
-  "baseURI": ".",
-  "name": "NFT #",
-  "description": "This is a description for this NFT series."
-})
+generate_unique_images(amount_of_nfts, config)
 
 #Additional layer objects can be added following the above formats. They will automatically be composed along with the rest of the layers as long as they are the same size as eachother.
 #Objects are layered starting from 0 and increasing, meaning the front layer will be the last object. (Branding)
